@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 
 import { certs, contact, disciplines, projects, skills } from "@/lib/content";
 import { Nav } from "@/components/nav";
@@ -9,6 +9,14 @@ import { Typewriter } from "@/components/typewriter";
 import { Reveal } from "@/components/reveal";
 
 export function Portfolio() {
+  useEffect(() => {
+    // Always return to top on load/refresh — disable browser scroll restoration
+    if (typeof window !== "undefined") {
+      history.scrollRestoration = "manual";
+      window.scrollTo({ top: 0, behavior: "instant" });
+    }
+  }, []);
+
   return (
     <div className="relative">
       <Nav />
@@ -34,10 +42,29 @@ export function Portfolio() {
           <div className="mt-8 flex flex-wrap gap-2">
             {skills.map((skill) => (
               <span
-                key={skill}
-                className="rounded-full border border-paper/20 bg-paper/8 px-3 py-1 font-mono text-[11px] tracking-[0.12em] text-paper/85 transition-colors hover:border-lime/50 hover:bg-lime/10 hover:text-lime"
+                key={skill.name}
+                className="group/pill rounded-full border border-paper/20 bg-paper/8 px-3 py-1 font-mono text-[11px] tracking-[0.12em] text-paper/85 transition-all duration-200 cursor-default"
+                style={
+                  {
+                    "--pill-color": skill.color,
+                    "--pill-color-bg": skill.color + "1a",
+                    "--pill-color-border": skill.color + "80",
+                  } as React.CSSProperties
+                }
+                onMouseEnter={(e) => {
+                  const el = e.currentTarget;
+                  el.style.color = skill.color;
+                  el.style.borderColor = skill.color + "80";
+                  el.style.backgroundColor = skill.color + "1a";
+                }}
+                onMouseLeave={(e) => {
+                  const el = e.currentTarget;
+                  el.style.color = "";
+                  el.style.borderColor = "";
+                  el.style.backgroundColor = "";
+                }}
               >
-                {skill}
+                {skill.name}
               </span>
             ))}
           </div>

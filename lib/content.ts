@@ -6,10 +6,18 @@ export const roles = [
 ] as const;
 
 export const skills = [
-  "Kotlin", "Jetpack Compose", "Android SDK",
-  "React", "Next.js", "Node.js",
-  "Firebase", "Figma", "Git",
-  "Adobe Illustrator", "After Effects", "Laravel",
+  { name: "Kotlin",             color: "#7F52FF" },
+  { name: "Jetpack Compose",    color: "#4285F4" },
+  { name: "Android SDK",        color: "#3DDC84" },
+  { name: "React",              color: "#61DAFB" },
+  { name: "Next.js",            color: "#666666" },
+  { name: "Node.js",            color: "#5FA04E" },
+  { name: "Firebase",           color: "#DD2C00" },
+  { name: "Figma",              color: "#F24E1E" },
+  { name: "Git",                color: "#F05032" },
+  { name: "Adobe Illustrator",  color: "#FF9A00" },
+  { name: "After Effects",      color: "#9999FF" },
+  { name: "Laravel",            color: "#FF2D20" },
 ] as const;
 
 export const nav = [
