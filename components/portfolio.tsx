@@ -42,11 +42,6 @@ export function Portfolio() {
             ))}
           </div>
           <p className="mt-6 flex items-center gap-2 font-mono text-[11px] tracking-[0.16em] text-muted uppercase">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-lime opacity-60" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-lime" />
-            </span>
-            Currently open to full-time WFO and part-time remote roles · Based in Depok, Indonesia
           </p>
           <a
             href="#about"
@@ -128,8 +123,8 @@ export function Portfolio() {
               <div className="mt-8 grid grid-cols-3 gap-4 border-t border-paper/10 pt-6">
                 {[
                   { value: "2+", label: "Years exp." },
-                  { value: "3", label: "Apps shipped" },
-                  { value: "300+", label: "Students taught" },
+                  { value: "5", label: "Apps shipped" },
+                  { value: "30+", label: "Cup of coffees made per month" },
                 ].map((stat) => (
                   <div key={stat.label}>
                     <p className="font-display text-3xl font-bold tracking-[-0.04em] text-paper">{stat.value}</p>
