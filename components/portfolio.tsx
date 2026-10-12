@@ -89,6 +89,10 @@ export function Portfolio() {
                 discipline I bring to vectors and motion: tight grids, honest
                 timing, no leftover noise.
               </p>
+              <p className="mt-5 inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.18em] text-mint uppercase">
+                <span className="h-px w-6 bg-mint" />
+                S.Kom. Computer Science &middot; GPA 3.78 Cumlaude &middot; STT Nurul Fikri
+              </p>
             </div>
           </Reveal>
           <Reveal delay={0.15}>
@@ -130,17 +134,17 @@ export function Portfolio() {
         </div>
         <div className="mx-auto w-full max-w-6xl py-24">
           <Reveal delay={0}>
-            <div>
+            <div className="border-l-4 border-lime pl-4">
               <p className="font-mono text-[11px] tracking-[0.28em] text-mint uppercase">
                 03 — Projects
               </p>
-              <h2 className="mt-3 font-display text-4xl font-semibold tracking-[-0.04em]">
+              <h2 className="mt-3 font-display text-5xl md:text-6xl font-semibold tracking-[-0.04em]">
                 Selected work
               </h2>
             </div>
           </Reveal>
           <Reveal delay={0.12}>
-            <ul className="mt-10 divide-y divide-paper/10 border-y border-paper/10">
+            <ul className="mt-14 divide-y divide-paper/10 border-y border-paper/10">
             {projects.map((project) => (
               <li key={project.title}>
                 <a
@@ -148,6 +152,12 @@ export function Portfolio() {
                   className="group relative grid gap-2 py-6 md:grid-cols-[5.5rem_1.2fr_0.9fr_1.4fr] md:items-baseline overflow-hidden"
                   style={{ "--project-accent": project.accent } as React.CSSProperties}
                 >
+                  {/* left accent bar */}
+                  <span
+                    className="absolute left-0 top-0 bottom-0 w-[3px] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    style={{background: project.accent}}
+                    aria-hidden="true"
+                  />
                   {/* icon overlay — always faintly visible at bottom-right, brightens on hover */}
                   <span
                     className="pointer-events-none absolute right-0 bottom-0 top-0 w-40 md:w-56 flex items-center justify-end pr-4"
@@ -161,7 +171,8 @@ export function Portfolio() {
                       <img
                         src={project.icon}
                         alt=""
-                        className="relative z-10 h-16 w-16 rounded-[22%] shadow-md opacity-20 group-hover:opacity-60 transition-opacity duration-500"
+                        className="relative z-10 h-16 w-16 rounded-[22%] shadow-md opacity-20 group-hover:opacity-60 transition-opacity duration-500 bg-paper/10"
+                        loading="lazy"
                       />
                     ) : (
                       <span className="relative z-10 flex h-14 w-14 items-center justify-center rounded-[22%] font-display text-base font-bold tracking-tight transition-all duration-500"
@@ -280,7 +291,7 @@ export function Portfolio() {
                 05 — Footer
               </p>
               <h2 className="mt-4 font-display text-[clamp(2.4rem,7vw,6rem)] leading-[0.9] font-semibold tracking-[-0.05em]">
-                Let&apos;s connect.
+                Open to Android &amp; frontend roles &mdash; let&apos;s talk.
               </h2>
             </div>
           </Reveal>

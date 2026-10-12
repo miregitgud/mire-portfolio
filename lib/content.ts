@@ -1,8 +1,8 @@
 export const roles = [
-  "I'm an Android Developer.",
-  "Also a Web Developer.",
-  "Yes, I also do Vector illustrations and Motion graphics too.",
-  "Let's connect and drink some black coffee! :)",
+  "Android Developer.",
+  "Frontend Developer.",
+  "Vector Illustrator & Motion Designer.",
+  "Let's grab some coffee and build something. :)",
 ] as const;
 
 export const nav = [
