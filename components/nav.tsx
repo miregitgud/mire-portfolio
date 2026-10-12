@@ -51,15 +51,17 @@ export function Nav() {
   }, []);
 
   return (
-    <header className="pointer-events-none fixed inset-x-0 top-0 z-40 flex justify-center px-4 pt-5">
-      <nav className="pointer-events-auto flex items-center gap-1 rounded-full border border-paper/10 bg-snow/70 px-2 py-1.5 shadow-sm backdrop-blur-md">
+    <header className="pointer-events-none fixed inset-x-0 top-0 z-40 flex justify-center px-3 pt-4 md:px-4 md:pt-5">
+      <nav className="pointer-events-auto flex items-center gap-0.5 rounded-full border border-paper/10 bg-snow/70 px-1.5 py-1 shadow-sm backdrop-blur-md max-w-[calc(100vw-1.5rem)] overflow-x-auto md:gap-1 md:px-2 md:py-1.5 scrollbar-none"
+        style={{ scrollbarWidth: "none" }}
+      >
         {nav.map((item) => {
           const on = active === item.href;
           return (
             <a
               key={item.href}
               href={item.href}
-              className={`rounded-full px-3.5 py-1.5 text-[11px] font-medium tracking-[0.16em] uppercase transition-colors ${
+              className={`rounded-full px-2.5 py-1 text-[10px] font-medium tracking-[0.12em] uppercase transition-colors md:px-3.5 md:py-1.5 md:text-[11px] md:tracking-[0.16em] ${
                 on ? "bg-paper text-snow" : "text-paper/55 hover:text-paper hover:underline underline-offset-2"
               }`}
             >
@@ -77,7 +79,7 @@ export function Nav() {
         <button
           onClick={toggleTheme}
           aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
-          className="ml-1 flex h-7 w-7 items-center justify-center rounded-full text-paper/50 transition-colors hover:text-lime"
+          className="ml-0.5 flex h-6 w-6 items-center justify-center rounded-full text-paper/50 transition-colors hover:text-lime md:ml-1 md:h-7 md:w-7"
         >
           {dark ? (
             /* Sun icon */
