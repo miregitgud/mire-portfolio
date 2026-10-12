@@ -139,7 +139,7 @@ export function Portfolio() {
                 02 — About
               </p>
               <h2 className="mt-4 font-display text-4xl font-semibold tracking-[-0.04em] md:text-5xl">
-                Systems with a graphic pulse.
+                Keeping pace with a fast-moving industry.
               </h2>
               <p className="mt-6 max-w-md text-[15px] leading-7 text-paper/68">
                 Software developer with hands-on experience shipping Android apps to real users —
@@ -377,8 +377,61 @@ export function Portfolio() {
         className="snap-section relative flex items-end border-t border-paper/8 bg-ink px-6 pb-10 md:px-12"
       >
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
+
+          {/* dot grid — full coverage, very faint */}
+          <svg viewBox="0 0 600 400" fill="none" aria-hidden="true" className="absolute inset-0 h-full w-full" style={{opacity: 0.06}}>
+            <defs>
+              <pattern id="dot-contact" x="0" y="0" width="28" height="28" patternUnits="userSpaceOnUse">
+                <circle cx="1" cy="1" r="1" fill="var(--lime)"/>
+              </pattern>
+            </defs>
+            <rect width="600" height="400" fill="url(#dot-contact)"/>
+          </svg>
+
+          {/* large spinning orbit ring — top left */}
+          <svg viewBox="0 0 400 400" fill="none" aria-hidden="true" className="absolute" style={{left: '-8%', top: '-10%', width: 'min(55vw, 420px)', opacity: 0.18, animation: 'spin-slow 32s linear infinite', transformOrigin: '50% 50%'}}>
+            <circle cx="200" cy="200" r="188" stroke="var(--lime)" strokeWidth="1" strokeDasharray="12 8"/>
+            <circle cx="200" cy="12" r="5" fill="var(--lime)" opacity="0.8"/>
+          </svg>
+
+          {/* smaller reverse orbit ring — bottom right */}
+          <svg viewBox="0 0 260 260" fill="none" aria-hidden="true" className="absolute" style={{right: '18%', bottom: '-8%', width: 'min(32vw, 260px)', opacity: 0.14, animation: 'spin-slow 20s linear infinite reverse', transformOrigin: '50% 50%'}}>
+            <circle cx="130" cy="130" r="120" stroke="var(--mint)" strokeWidth="1" strokeDasharray="6 5"/>
+            <circle cx="130" cy="10" r="3.5" fill="var(--mint)" opacity="0.7"/>
+          </svg>
+
+          {/* sweeping bezier arc top */}
+          <svg viewBox="0 0 700 280" fill="none" aria-hidden="true" className="absolute" style={{top: '0%', left: '-2%', width: 'min(75vw, 680px)', opacity: 0.2}}>
+            <path d="M 0 240 C 100 80, 340 20, 700 140" stroke="var(--lime)" strokeWidth="1.2" strokeLinecap="round" strokeDasharray="8 6"/>
+          </svg>
+
+          {/* horizontal signal line with nodes */}
+          <svg viewBox="0 0 600 24" fill="none" aria-hidden="true" className="absolute" style={{left: 0, right: 0, top: '48%', width: '100%', opacity: 0.12}}>
+            <line x1="0" y1="12" x2="600" y2="12" stroke="var(--lime)" strokeWidth="0.8" strokeDasharray="5 4"/>
+            {[30, 90, 160, 240, 320, 420, 520, 580].map((cx) => (
+              <circle key={cx} cx={cx} cy="12" r="2.5" fill="var(--lime)"/>
+            ))}
+          </svg>
+
+          {/* crosshair — mid left */}
+          <svg viewBox="0 0 40 40" fill="none" aria-hidden="true" className="absolute" style={{left: '6%', top: '40%', width: 'min(4vw, 40px)', opacity: 0.25}}>
+            <circle cx="20" cy="20" r="16" stroke="var(--lime)" strokeWidth="1"/>
+            <circle cx="20" cy="20" r="4" stroke="var(--lime)" strokeWidth="1"/>
+            <line x1="20" y1="0" x2="20" y2="14" stroke="var(--lime)" strokeWidth="1"/>
+            <line x1="20" y1="26" x2="20" y2="40" stroke="var(--lime)" strokeWidth="1"/>
+            <line x1="0" y1="20" x2="14" y2="20" stroke="var(--lime)" strokeWidth="1"/>
+            <line x1="26" y1="20" x2="40" y2="20" stroke="var(--lime)" strokeWidth="1"/>
+          </svg>
+
+          {/* code snippet frame — bottom center */}
+          <svg viewBox="0 0 140 52" fill="none" aria-hidden="true" className="absolute" style={{left: '50%', bottom: '8%', transform: 'translateX(-50%)', width: 'min(18vw, 130px)', opacity: 0.2, animation: 'fade-drift 9s ease-in-out infinite'}}>
+            <rect x="2" y="2" width="136" height="48" rx="8" stroke="var(--lime)" strokeWidth="1.2" strokeDasharray="4 3"/>
+            <text x="12" y="22" fontFamily="monospace" fontSize="10" fill="var(--lime)" opacity="0.9">let&apos;s build()</text>
+            <text x="12" y="38" fontFamily="monospace" fontSize="10" fill="var(--mint)" opacity="0.8">{`{ together }`}</text>
+          </svg>
+
           {/* large faint Bugdroid stroke outline */}
-          <svg viewBox="0 0 200 248" fill="none" aria-hidden="true" className="float-slow absolute" style={{right: '4%', top: '8%', width: 'min(30vw, 240px)', opacity: 0.28, color: 'var(--lime)'}}>
+          <svg viewBox="0 0 200 248" fill="none" aria-hidden="true" className="float-slow absolute" style={{right: '4%', top: '8%', width: 'min(30vw, 240px)', opacity: 0.28}}>
             <path d="M58 42 L40 12" stroke="var(--lime)" strokeWidth="7" strokeLinecap="round"/>
             <path d="M142 42 L160 12" stroke="var(--lime)" strokeWidth="7" strokeLinecap="round"/>
             <circle cx="40" cy="12" r="6" stroke="var(--lime)" strokeWidth="2" fill="none"/>
@@ -392,6 +445,7 @@ export function Portfolio() {
             <rect x="60" y="196" width="28" height="44" rx="14" stroke="var(--lime)" strokeWidth="2" fill="none"/>
             <rect x="112" y="196" width="28" height="44" rx="14" stroke="var(--lime)" strokeWidth="2" fill="none"/>
           </svg>
+
           {/* motion chevrons */}
           <svg viewBox="0 0 120 28" fill="none" aria-hidden="true" className="absolute" style={{left: '3%', bottom: '12%', width: 'min(14vw, 120px)', opacity: 0.3}}>
             {[0, 32, 64].map((offset, i) => (
@@ -401,15 +455,16 @@ export function Portfolio() {
             ))}
             <line x1="4" y1="14" x2="110" y2="14" stroke="var(--lime)" strokeWidth="0.8" strokeDasharray="4 4" opacity="0.5"/>
           </svg>
+
         </div>
         <div className="mx-auto w-full max-w-6xl py-24">
           <Reveal delay={0}>
             <div>
               <p className="font-mono text-[11px] tracking-[0.28em] text-mint uppercase">
-                05 — Footer
+                05 — Contact
               </p>
               <h2 className="mt-4 font-display text-[clamp(2.4rem,7vw,6rem)] leading-[0.9] font-semibold tracking-[-0.05em]">
-                Open to Android &amp; fullstack roles &mdash; let&apos;s talk.
+                Open to Android &amp; fullstack roles. Let&apos;s talk.
               </h2>
             </div>
           </Reveal>
