@@ -11,6 +11,7 @@ function CodeLabel() {
       style={{top: '11%',
         left: '3%',
         width: 'min(14vw, 110px)',
+        opacity: 0.55,
         animation: 'fade-drift 9s ease-in-out infinite',}}
     >
       {/* rounded rect frame */}
@@ -47,7 +48,7 @@ function SignalLine() {
       style={{bottom: '14%',
         left: '1%',
         width: 'min(38vw, 320px)',
-        opacity: 0.14,}}
+        opacity: 0.42,}}
     >
       {/* dashed line */}
       <line
@@ -83,7 +84,7 @@ function PhoneOutlines() {
         style={{left: '6%',
           top: '34%',
           width: 'min(6vw, 54px)',
-          opacity: 0.13,
+          opacity: 0.52,
           animationDelay: '0s',}}
       >
         <rect
@@ -102,7 +103,7 @@ function PhoneOutlines() {
         style={{left: '10%',
           top: '42%',
           width: 'min(5vw, 42px)',
-          opacity: 0.18,
+          opacity: 0.58,
           animationDelay: '1.8s',}}
       >
         <rect
@@ -130,7 +131,7 @@ function BezierArc() {
       style={{top: '4%',
         left: '-2%',
         width: 'min(52vw, 500px)',
-        opacity: 0.13,}}
+        opacity: 0.5,}}
     >
       <path
         d="M 0 200 C 80 50, 280 20, 500 120"
@@ -154,7 +155,7 @@ function Crosshair() {
       style={{left: '16%',
         top: '55%',
         width: 'min(3.5vw, 36px)',
-        opacity: 0.14,}}
+        opacity: 0.42,}}
     >
       {/* outer circle */}
       <circle cx="20" cy="20" r="16" stroke="var(--lime)" strokeWidth="1" />
@@ -180,7 +181,7 @@ function OrbitRing() {
       style={{right: '-4%',
         top: '10%',
         width: 'min(42vw, 380px)',
-        opacity: 0.12,
+        opacity: 0.5,
         animation: 'spin-slow 24s linear infinite',
         transformOrigin: '50% 50%',}}
     >
@@ -206,7 +207,7 @@ function MotionChevrons() {
       style={{right: '2%',
         bottom: '8%',
         width: 'min(14vw, 120px)',
-        opacity: 0.16,}}
+        opacity: 0.42,}}
     >
       {[0, 32, 64].map((offset, i) => (
         <g key={i} transform={`translate(${offset}, 0)`} opacity={1 - i * 0.22}>

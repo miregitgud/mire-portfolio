@@ -185,9 +185,9 @@ body {
 
 /* Subtle opacity pulse + tiny horizontal drift — used for the code label */
 @keyframes fade-drift {
-  0%   { opacity: 0.18; transform: translateX(0); }
-  40%  { opacity: 0.12; transform: translateX(-6px); }
-  100% { opacity: 0.18; transform: translateX(0); }
+  0%   { opacity: 0.55; transform: translateX(0); }
+  40%  { opacity: 0.42; transform: translateX(-6px); }
+  100% { opacity: 0.55; transform: translateX(0); }
 }
 
 @media (prefers-reduced-motion: reduce) {
