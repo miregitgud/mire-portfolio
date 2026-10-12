@@ -15,22 +15,31 @@ export function Reveal({ children, delay = 0, className = "" }: RevealProps) {
     const el = ref.current;
     if (!el) return;
 
-    // Respect prefers-reduced-motion: skip animation, render visible immediately
+    // Respect prefers-reduced-motion
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       el.classList.add("is-visible");
       return;
     }
 
+    // If already in view on mount (e.g. first section), trigger immediately
+    const rect = el.getBoundingClientRect();
+    const inView =
+      rect.top < window.innerHeight && rect.bottom > 0;
+    if (inView) {
+      // Small delay so the transition actually plays rather than snapping
+      const t = window.setTimeout(() => el.classList.add("is-visible"), 80);
+      return () => window.clearTimeout(t);
+    }
+
+    // Otherwise watch for scroll-into-view
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            el.classList.add("is-visible");
-            observer.disconnect(); // one-time only
-          }
-        });
+        if (entries[0].isIntersecting) {
+          el.classList.add("is-visible");
+          observer.disconnect();
+        }
       },
-      { threshold: 0.15, rootMargin: "0px 0px -48px 0px" }
+      { threshold: 0.05 }
     );
 
     observer.observe(el);
