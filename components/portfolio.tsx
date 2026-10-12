@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import { certs, contact, disciplines, projects } from "@/lib/content";
+import { certs, contact, disciplines, projects, skills } from "@/lib/content";
 import { Nav } from "@/components/nav";
 import { Scene } from "@/components/scene";
 import { Typewriter } from "@/components/typewriter";
@@ -30,6 +30,23 @@ export function Portfolio() {
             <span className="hero-box" aria-hidden="true" />
           </div>
           <Typewriter />
+          <div className="mt-8 flex flex-wrap gap-2">
+            {skills.map((skill) => (
+              <span
+                key={skill}
+                className="rounded-full border border-paper/15 bg-paper/5 px-3 py-1 font-mono text-[11px] tracking-[0.12em] text-paper/60 transition-colors hover:border-lime/40 hover:text-lime"
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
+          <p className="mt-6 flex items-center gap-2 font-mono text-[11px] tracking-[0.16em] text-muted uppercase">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-lime opacity-60" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-lime" />
+            </span>
+            Currently open to full-time WFO and part-time remote roles · Based in Depok, Indonesia
+          </p>
           <a
             href="#about"
             className="mt-14 inline-flex items-center gap-3 text-[11px] tracking-[0.22em] text-muted uppercase"
@@ -106,6 +123,18 @@ export function Portfolio() {
                 co-teaching mobile dev to 300+ students at Infinite Learning.
                 I move between Kotlin, React, and motion tooling without losing the thread.
               </p>
+              <div className="mt-8 grid grid-cols-3 gap-4 border-t border-paper/10 pt-6">
+                {[
+                  { value: "2+", label: "Years exp." },
+                  { value: "3", label: "Apps shipped" },
+                  { value: "300+", label: "Students taught" },
+                ].map((stat) => (
+                  <div key={stat.label}>
+                    <p className="font-display text-3xl font-bold tracking-[-0.04em] text-paper">{stat.value}</p>
+                    <p className="mt-1 font-mono text-[10px] tracking-[0.18em] text-muted uppercase">{stat.label}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </Reveal>
           <Reveal delay={0.15}>
@@ -359,6 +388,15 @@ export function Portfolio() {
                 Open to Android &amp; fullstack roles &mdash; let&apos;s talk.
               </h2>
             </div>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <p className="mt-4 flex items-center gap-2 font-mono text-[11px] tracking-[0.16em] text-muted uppercase">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-lime opacity-60" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-lime" />
+              </span>
+              Currently open to full-time WFO and part-time remote roles · Based in Depok, Indonesia
+            </p>
           </Reveal>
           <Reveal delay={0.12}>
             <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 text-base text-paper/75">

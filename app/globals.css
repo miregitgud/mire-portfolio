@@ -11,20 +11,20 @@
   --snow: #ffffff;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --ink: #1a1f2e;
-    --paper: #e8f0f8;
-    --muted: #8892a0;
-    --snow: #12161f;
-    --line: rgba(232, 240, 248, 0.08);
-  }
-  #home {
-    background: linear-gradient(180deg, #0d1117 0%, #1a1f2e 48%, #12161f 100%);
-  }
+/* Dark mode — toggled via data-theme="dark" on <html> */
+[data-theme="dark"] {
+  --ink: #1a1f2e;
+  --paper: #e8f0f8;
+  --muted: #8892a0;
+  --snow: #12161f;
+  --line: rgba(232, 240, 248, 0.08);
 }
 
-@theme inline {
+[data-theme="dark"] #home {
+  background: linear-gradient(180deg, #0d1117 0%, #1a1f2e 48%, #12161f 100%);
+}
+
+@theme {
   --color-ink: var(--ink);
   --color-paper: var(--paper);
   --color-muted: var(--muted);
@@ -263,6 +263,10 @@ a:hover .cv-icon {
   .cv-icon {
     animation: none;
     transform: none;
+  }
+
+  .animate-ping {
+    animation: none;
   }
 
   .reveal {
