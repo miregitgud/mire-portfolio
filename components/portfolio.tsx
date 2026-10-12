@@ -35,7 +35,7 @@ export function Portfolio() {
             {skills.map((skill) => (
               <span
                 key={skill}
-                className="rounded-full border border-paper/15 bg-paper/5 px-3 py-1 font-mono text-[11px] tracking-[0.12em] text-paper/60 transition-colors hover:border-lime/40 hover:text-lime"
+                className="rounded-full border border-paper/20 bg-paper/8 px-3 py-1 font-mono text-[11px] tracking-[0.12em] text-paper/85 transition-colors hover:border-lime/50 hover:bg-lime/10 hover:text-lime"
               >
                 {skill}
               </span>
