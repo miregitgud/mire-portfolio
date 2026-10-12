@@ -20,8 +20,9 @@ export function Portfolio() {
       >
         <Scene />
         <div className="relative mx-auto w-full max-w-6xl pt-16">
+          <div className="w-full md:max-w-[52%]">
           <p className="mb-6 font-mono text-[11px] tracking-[0.28em] text-mint uppercase">
-            Android & Web Developer · Kotlin / Jetpack Compose / React / Node.js
+            Android & Web Developer
           </p>
           <div className="hero-mask">
             <h1 className="hero-title font-display whitespace-nowrap text-[clamp(2.05rem,8.4vw,5.1rem)] leading-[0.92] font-bold tracking-[-0.045em]">
@@ -70,6 +71,7 @@ export function Portfolio() {
               />
             </svg>
           </a>
+          </div>
         </div>
       </section>
 
