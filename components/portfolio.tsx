@@ -24,7 +24,7 @@ export function Portfolio() {
             Android & Web Developer · Kotlin / Jetpack Compose / React / Node.js
           </p>
           <div className="hero-mask">
-            <h1 className="hero-title font-display whitespace-nowrap text-[clamp(2.05rem,8.4vw,7.1rem)] leading-[0.92] font-bold tracking-[-0.045em]">
+            <h1 className="hero-title font-display whitespace-nowrap text-[clamp(2.05rem,8.4vw,5.1rem)] leading-[0.92] font-bold tracking-[-0.045em]">
               Hi, I&apos;m Ayyash
             </h1>
             <span className="hero-box" aria-hidden="true" />
@@ -36,6 +36,22 @@ export function Portfolio() {
           >
             <span className="h-px w-10 bg-lime" />
             Scroll
+            <svg
+              className="scroll-chevron"
+              width="12"
+              height="8"
+              viewBox="0 0 12 8"
+              fill="none"
+              aria-hidden="true"
+            >
+              <polyline
+                points="1,1 6,7 11,1"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
           </a>
         </div>
       </section>
@@ -85,13 +101,10 @@ export function Portfolio() {
                 Systems with a graphic pulse.
               </h2>
               <p className="mt-6 max-w-md text-[15px] leading-7 text-paper/68">
-                I ship Android products, websites, and backend services with the same
-                discipline I bring to vectors and motion: tight grids, honest
-                timing, no leftover noise.
-              </p>
-              <p className="mt-5 inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.18em] text-mint uppercase">
-                <span className="h-px w-6 bg-mint" />
-                S.Kom. Computer Science &middot; GPA 3.78 Cumlaude &middot; STT Nurul Fikri
+                Software developer with hands-on experience shipping Android apps to real users —
+                from rebuilding a field operations platform for Balitower technicians to
+                co-teaching mobile dev to 300+ students at Infinite Learning.
+                I move between Kotlin, React, and motion tooling without losing the thread.
               </p>
             </div>
           </Reveal>
@@ -100,13 +113,62 @@ export function Portfolio() {
             {disciplines.map((item) => (
               <li
                 key={item.tag}
-                className="border border-paper/10 bg-ink/60 p-5"
+                className="group relative border border-paper/10 bg-ink/60 p-6 overflow-hidden transition-colors hover:border-lime/30 hover:bg-ink/80 flex flex-col"
               >
-                <span className="font-mono text-[11px] text-lime">{item.tag}</span>
-                <h3 className="mt-3 font-display text-xl tracking-[-0.03em]">
+                {/* large faint tag number — decorative background */}
+                <span
+                  className="pointer-events-none absolute -right-3 -top-4 font-display text-[7rem] font-bold leading-none tracking-tighter text-paper/[0.04] select-none transition-colors group-hover:text-lime/[0.07]"
+                  aria-hidden="true"
+                >
+                  {item.tag}
+                </span>
+
+                {/* top accent line */}
+                <span className="block h-[2px] w-8 bg-lime/40 mb-5 transition-all duration-300 group-hover:w-14 group-hover:bg-lime" />
+
+                <span className="font-mono text-[10px] tracking-[0.22em] text-lime/70 uppercase">{item.tag}</span>
+                <h3 className="mt-2 font-display text-xl tracking-[-0.03em] transition-colors group-hover:text-paper">
                   {item.title}
                 </h3>
-                <p className="mt-2 text-sm leading-6 text-muted">{item.copy}</p>
+                <p className="mt-3 text-sm leading-6 text-muted">{item.copy}</p>
+
+                {/* icon cluster — bottom-right */}
+                <div className="pointer-events-none mt-auto pt-4 self-end flex items-center gap-2" aria-hidden="true">
+                  {item.icons.map((icon) =>
+                    icon.type === "inline" ? (
+                      <svg key={icon.label} viewBox="0 0 200 248" fill="currentColor" className="h-7 w-7 opacity-20 group-hover:opacity-35 transition-opacity" style={{ color: "#3ddc84" }}>
+                        <path d="M58 42 L40 12" stroke="currentColor" strokeWidth="7" strokeLinecap="round"/>
+                        <path d="M142 42 L160 12" stroke="currentColor" strokeWidth="7" strokeLinecap="round"/>
+                        <circle cx="40" cy="12" r="6" fill="currentColor"/>
+                        <circle cx="160" cy="12" r="6" fill="currentColor"/>
+                        <path d="M36 92c0-36 28-58 64-58s64 22 64 58H36Z" fill="currentColor"/>
+                        <circle cx="76" cy="66" r="7.5" fill="var(--ink)"/>
+                        <circle cx="124" cy="66" r="7.5" fill="var(--ink)"/>
+                        <rect x="36" y="100" width="128" height="92" rx="14" fill="currentColor"/>
+                        <rect x="8" y="104" width="22" height="72" rx="11" fill="currentColor"/>
+                        <rect x="170" y="104" width="22" height="72" rx="11" fill="currentColor"/>
+                        <rect x="60" y="196" width="28" height="44" rx="14" fill="currentColor"/>
+                        <rect x="112" y="196" width="28" height="44" rx="14" fill="currentColor"/>
+                      </svg>
+                    ) : icon.type === "svg" ? (
+                      <svg key={icon.label} viewBox="0 0 24 24" className="h-[22px] w-[22px] opacity-25 group-hover:opacity-40 transition-opacity" fill={icon.color} aria-label={icon.label}>
+                        <path d={icon.path} />
+                      </svg>
+                    ) : (
+                      <img
+                        key={icon.label}
+                        src={`https://cdn.simpleicons.org/${icon.slug}/${icon.color.replace("#", "")}`}
+                        alt={icon.label}
+                        title={icon.label}
+                        width={22}
+                        height={22}
+                        className="h-[22px] w-[22px] transition-opacity group-hover:opacity-40"
+                        style={{ opacity: (icon as { opacity?: number }).opacity ?? 0.25 }}
+                        loading="lazy"
+                      />
+                    )
+                  )}
+                </div>
               </li>
             ))}
             </ul>
@@ -152,12 +214,6 @@ export function Portfolio() {
                   className="group relative grid gap-2 py-6 md:grid-cols-[5.5rem_1.2fr_0.9fr_1.4fr] md:items-baseline overflow-hidden"
                   style={{ "--project-accent": project.accent } as React.CSSProperties}
                 >
-                  {/* left accent bar */}
-                  <span
-                    className="absolute left-0 top-0 bottom-0 w-[3px] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    style={{background: project.accent}}
-                    aria-hidden="true"
-                  />
                   {/* icon overlay — always faintly visible at bottom-right, brightens on hover */}
                   <span
                     className="pointer-events-none absolute right-0 bottom-0 top-0 w-40 md:w-56 flex items-center justify-end pr-4"
@@ -183,7 +239,12 @@ export function Portfolio() {
                     )}
                   </span>
 
-                  <span className="font-mono text-[11px] text-muted">
+                  <span className="font-mono text-[11px] text-muted flex items-center">
+                    <span
+                      className="inline-block h-2 w-2 rounded-full mr-2 md:hidden flex-shrink-0"
+                      style={{background: project.accent}}
+                      aria-hidden="true"
+                    />
                     {project.year}
                   </span>
                   <h3 className="font-display text-2xl tracking-[-0.03em] transition-colors duration-300 group-hover:[color:var(--project-accent)]">
@@ -221,10 +282,10 @@ export function Portfolio() {
           <Reveal delay={0}>
             <div>
               <p className="font-mono text-[11px] tracking-[0.28em] text-mint uppercase">
-                04 — Certifications
+                04 — Training
               </p>
               <h2 className="mt-3 font-display text-4xl font-semibold tracking-[-0.04em]">
-                Proof of craft
+                Courses &amp; training
               </h2>
             </div>
           </Reveal>
@@ -234,18 +295,22 @@ export function Portfolio() {
               <li key={cert.title} className="bg-snow">
                 <a
                   href={cert.href}
-                  className="group block p-7 transition-colors hover:bg-ink/5"
+                  className="group relative block overflow-hidden border-b border-paper/8 p-7 transition-all hover:bg-ink/[0.03]"
                 >
-                  <p className="font-mono text-[11px] tracking-[0.18em] text-lime uppercase">
+                  {/* left border accent on hover */}
+                  <span className="absolute left-0 top-0 h-full w-[3px] bg-lime scale-y-0 origin-top transition-transform duration-300 group-hover:scale-y-100" aria-hidden="true" />
+
+                  <p className="font-mono text-[10px] tracking-[0.22em] text-lime uppercase">
                     {cert.issuer}
                   </p>
-                  <h3 className="mt-4 font-display text-2xl tracking-[-0.03em] transition-colors group-hover:text-lime">
+                  <h3 className="mt-3 font-display text-2xl tracking-[-0.03em] transition-colors group-hover:text-lime">
                     {cert.title}
                   </h3>
-                  <p className="mt-6 text-sm text-muted">{cert.year}</p>
-                  <p className="mt-1 font-mono text-[10px] tracking-[0.12em] text-muted/70">
-                    {cert.location}
-                  </p>
+                  <div className="mt-5 flex items-center gap-3">
+                    <span className="font-mono text-[11px] text-muted">{cert.year}</span>
+                    <span className="h-px flex-1 bg-paper/8" />
+                    <span className="font-mono text-[10px] tracking-[0.1em] text-muted/60">{cert.location}</span>
+                  </div>
                 </a>
               </li>
             ))}
@@ -291,15 +356,16 @@ export function Portfolio() {
                 05 — Footer
               </p>
               <h2 className="mt-4 font-display text-[clamp(2.4rem,7vw,6rem)] leading-[0.9] font-semibold tracking-[-0.05em]">
-                Open to Android &amp; frontend roles &mdash; let&apos;s talk.
+                Open to Android &amp; fullstack roles &mdash; let&apos;s talk.
               </h2>
             </div>
           </Reveal>
           <Reveal delay={0.12}>
-            <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-paper/75">
+            <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 text-base text-paper/75">
               <a className="hover:text-lime transition-colors" href={`mailto:${contact.email}`}>
                 {contact.email}
               </a>
+              <span className="text-paper/20">|</span>
               <a
                 className="text-paper/75 hover:text-lime transition-colors"
                 href={contact.whatsapp}
@@ -312,6 +378,7 @@ export function Portfolio() {
                   <path d="M12.001 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.978-1.424A9.955 9.955 0 0 0 12.001 22C17.524 22 22 17.523 22 12S17.524 2 12.001 2Zm0 1.8a8.2 8.2 0 1 1 0 16.4 8.2 8.2 0 0 1 0-16.4Zm-3.39 3.707c-.207 0-.43.003-.62.012-.198.01-.476.074-.727.35-.252.277-.962.94-.962 2.29 0 1.35.984 2.655 1.122 2.84.137.183 1.907 3.037 4.69 4.136.655.25 1.167.4 1.566.51.658.185 1.258.16 1.732.097.528-.07 1.627-.664 1.857-1.306.23-.64.23-1.19.16-1.305-.068-.114-.252-.183-.528-.32-.277-.137-1.637-.808-1.89-.9-.252-.092-.435-.137-.617.137-.183.275-.71.9-.87 1.085-.16.183-.32.206-.596.069-.275-.138-1.162-.428-2.213-1.365-.818-.73-1.37-1.63-1.531-1.905-.16-.275-.017-.424.12-.56.123-.123.275-.32.413-.48.138-.16.183-.274.275-.457.09-.183.045-.343-.023-.48-.069-.137-.617-1.49-.847-2.04-.22-.534-.448-.462-.617-.47l-.525-.008Z"/>
                 </svg>
               </a>
+              <span className="text-paper/20">|</span>
               <a
                 className="text-paper/75 hover:text-lime transition-colors"
                 href={contact.linkedin}
@@ -324,6 +391,7 @@ export function Portfolio() {
                   <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14Zm-1.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79ZM6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68Zm1.39 9.94V9.13H5.5v9.37h2.77Z"/>
                 </svg>
               </a>
+              <span className="text-paper/20">|</span>
               <a
                 className="text-paper/75 hover:text-lime transition-colors"
                 href={contact.github}
@@ -341,9 +409,11 @@ export function Portfolio() {
                 href={contact.cv}
                 download
               >
-                <svg viewBox="0 0 16 16" width="12" height="12" fill="currentColor" aria-hidden="true">
-                  <path d="M8 12L3 7h3V2h4v5h3L8 12ZM2 14h12v1.5H2V14Z"/>
-                </svg>
+                <span className="cv-icon">
+                  <svg viewBox="0 0 16 16" width="12" height="12" fill="currentColor" aria-hidden="true">
+                    <path d="M8 12L3 7h3V2h4v5h3L8 12ZM2 14h12v1.5H2V14Z"/>
+                  </svg>
+                </span>
                 Download CV
               </a>
             </div>

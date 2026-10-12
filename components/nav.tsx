@@ -38,10 +38,15 @@ export function Nav() {
               key={item.href}
               href={item.href}
               className={`rounded-full px-3.5 py-1.5 text-[11px] font-medium tracking-[0.16em] uppercase transition-colors ${
-                on ? "bg-paper text-snow" : "text-paper/55 hover:text-paper"
+                on ? "bg-paper text-snow" : "text-paper/55 hover:text-paper hover:underline underline-offset-2"
               }`}
             >
-              {item.label}
+              <span className="relative">
+                {item.label}
+                {on && (
+                  <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 h-[3px] w-[3px] rounded-full bg-lime" />
+                )}
+              </span>
             </a>
           );
         })}
