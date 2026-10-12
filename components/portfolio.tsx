@@ -4,6 +4,7 @@ import { certs, disciplines, projects } from "@/lib/content";
 import { Nav } from "@/components/nav";
 import { Scene } from "@/components/scene";
 import { Typewriter } from "@/components/typewriter";
+import { Reveal } from "@/components/reveal";
 
 export function Portfolio() {
   return (
@@ -72,20 +73,23 @@ export function Portfolio() {
           </svg>
         </div>
         <div className="mx-auto grid w-full max-w-6xl gap-12 py-24 md:grid-cols-[0.9fr_1.1fr] md:gap-20">
-          <div>
-            <p className="font-mono text-[11px] tracking-[0.28em] text-mint uppercase">
-              02 — About
-            </p>
-            <h2 className="mt-4 font-display text-4xl font-semibold tracking-[-0.04em] md:text-5xl">
-              Systems with a graphic pulse.
-            </h2>
-            <p className="mt-6 max-w-md text-[15px] leading-7 text-paper/68">
-              I ship Android products and backend services with the same
-              discipline I bring to vectors and motion: tight grids, honest
-              timing, no leftover noise.
-            </p>
-          </div>
-          <ul className="grid gap-4 sm:grid-cols-2">
+          <Reveal delay={0}>
+            <div>
+              <p className="font-mono text-[11px] tracking-[0.28em] text-mint uppercase">
+                02 — About
+              </p>
+              <h2 className="mt-4 font-display text-4xl font-semibold tracking-[-0.04em] md:text-5xl">
+                Systems with a graphic pulse.
+              </h2>
+              <p className="mt-6 max-w-md text-[15px] leading-7 text-paper/68">
+                I ship Android products and backend services with the same
+                discipline I bring to vectors and motion: tight grids, honest
+                timing, no leftover noise.
+              </p>
+            </div>
+          </Reveal>
+          <Reveal delay={0.15}>
+            <ul className="grid gap-4 sm:grid-cols-2">
             {disciplines.map((item) => (
               <li
                 key={item.tag}
@@ -98,7 +102,8 @@ export function Portfolio() {
                 <p className="mt-2 text-sm leading-6 text-muted">{item.copy}</p>
               </li>
             ))}
-          </ul>
+            </ul>
+          </Reveal>
         </div>
       </section>
 
@@ -121,13 +126,18 @@ export function Portfolio() {
           </svg>
         </div>
         <div className="mx-auto w-full max-w-6xl py-24">
-          <p className="font-mono text-[11px] tracking-[0.28em] text-mint uppercase">
-            03 — Projects
-          </p>
-          <h2 className="mt-3 font-display text-4xl font-semibold tracking-[-0.04em]">
-            Selected work
-          </h2>
-          <ul className="mt-10 divide-y divide-paper/10 border-y border-paper/10">
+          <Reveal delay={0}>
+            <div>
+              <p className="font-mono text-[11px] tracking-[0.28em] text-mint uppercase">
+                03 — Projects
+              </p>
+              <h2 className="mt-3 font-display text-4xl font-semibold tracking-[-0.04em]">
+                Selected work
+              </h2>
+            </div>
+          </Reveal>
+          <Reveal delay={0.12}>
+            <ul className="mt-10 divide-y divide-paper/10 border-y border-paper/10">
             {projects.map((project) => (
               <li
                 key={project.title}
@@ -145,7 +155,8 @@ export function Portfolio() {
                 <p className="text-sm leading-6 text-muted">{project.copy}</p>
               </li>
             ))}
-          </ul>
+            </ul>
+          </Reveal>
         </div>
       </section>
 
@@ -166,13 +177,18 @@ export function Portfolio() {
           </svg>
         </div>
         <div className="mx-auto w-full max-w-6xl py-24">
-          <p className="font-mono text-[11px] tracking-[0.28em] text-mint uppercase">
-            04 — Certifications
-          </p>
-          <h2 className="mt-3 font-display text-4xl font-semibold tracking-[-0.04em]">
-            Proof of craft
-          </h2>
-          <ul className="mt-10 grid gap-px bg-paper/10 sm:grid-cols-2">
+          <Reveal delay={0}>
+            <div>
+              <p className="font-mono text-[11px] tracking-[0.28em] text-mint uppercase">
+                04 — Certifications
+              </p>
+              <h2 className="mt-3 font-display text-4xl font-semibold tracking-[-0.04em]">
+                Proof of craft
+              </h2>
+            </div>
+          </Reveal>
+          <Reveal delay={0.12}>
+            <ul className="mt-10 grid gap-px bg-paper/10 sm:grid-cols-2">
             {certs.map((cert) => (
               <li key={cert.title} className="bg-snow p-7">
                 <p className="font-mono text-[11px] tracking-[0.18em] text-lime uppercase">
@@ -184,7 +200,8 @@ export function Portfolio() {
                 <p className="mt-6 text-sm text-muted">{cert.year}</p>
               </li>
             ))}
-          </ul>
+            </ul>
+          </Reveal>
         </div>
       </section>
 
@@ -219,26 +236,34 @@ export function Portfolio() {
           </svg>
         </div>
         <div className="mx-auto w-full max-w-6xl py-24">
-          <p className="font-mono text-[11px] tracking-[0.28em] text-mint uppercase">
-            05 — Footer
-          </p>
-          <h2 className="mt-4 font-display text-[clamp(2.4rem,7vw,6rem)] leading-[0.9] font-semibold tracking-[-0.05em]">
-            Let&apos;s connect.
-          </h2>
-          <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-paper/75">
-            <a className="hover:text-lime" href="mailto:ayyash@example.com">
-              ayyash@example.com
-            </a>
-            <a className="hover:text-lime" href="https://github.com" target="_blank" rel="noreferrer">
-              GitHub
-            </a>
-            <a className="hover:text-lime" href="https://linkedin.com" target="_blank" rel="noreferrer">
-              LinkedIn
-            </a>
-          </div>
-          <p className="mt-16 font-mono text-[11px] tracking-[0.16em] text-muted uppercase">
-            © 2026 Ayyash · Backend · Android · Vector · Motion
-          </p>
+          <Reveal delay={0}>
+            <div>
+              <p className="font-mono text-[11px] tracking-[0.28em] text-mint uppercase">
+                05 — Footer
+              </p>
+              <h2 className="mt-4 font-display text-[clamp(2.4rem,7vw,6rem)] leading-[0.9] font-semibold tracking-[-0.05em]">
+                Let&apos;s connect.
+              </h2>
+            </div>
+          </Reveal>
+          <Reveal delay={0.12}>
+            <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-paper/75">
+              <a className="hover:text-lime" href="mailto:ayyash@example.com">
+                ayyash@example.com
+              </a>
+              <a className="hover:text-lime" href="https://github.com" target="_blank" rel="noreferrer">
+                GitHub
+              </a>
+              <a className="hover:text-lime" href="https://linkedin.com" target="_blank" rel="noreferrer">
+                LinkedIn
+              </a>
+            </div>
+          </Reveal>
+          <Reveal delay={0.22}>
+            <p className="mt-16 font-mono text-[11px] tracking-[0.16em] text-muted uppercase">
+              © 2026 Ayyash · Backend · Android · Vector · Motion
+            </p>
+          </Reveal>
         </div>
       </footer>
     </div>
