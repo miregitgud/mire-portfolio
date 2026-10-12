@@ -537,7 +537,7 @@ export function Portfolio() {
           </Reveal>
           <Reveal delay={0.22}>
             <p className="mt-16 font-mono text-[11px] tracking-[0.16em] text-muted uppercase">
-              © 2026 Ayyash · Made with love and a cup of coffee.
+              © 2026 miregitgud · Made with love and a cup of coffee.
             </p>
           </Reveal>
         </div>
