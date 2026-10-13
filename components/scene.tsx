@@ -292,7 +292,7 @@ export function Scene() {
       <OrbitRing />
 
       {/* ── existing: Android Bugdroid mascot ── */}
-      <Bugdroid className="android-mark float-slow absolute right-[4%] top-[22%] h-[min(52vh,22rem)] w-auto text-[#3ddc84] opacity-20 md:opacity-100 md:h-[min(52vh,22rem)] h-[min(35vh,14rem)]" />
+      <Bugdroid className="android-mark float-slow absolute right-[4%] top-[22%] w-auto text-[#3ddc84] h-[min(35vh,14rem)] opacity-20 md:h-[min(52vh,22rem)] md:opacity-100" />
 
       {/* ── motion graphics: chevron arrows bottom-right ── */}
       <MotionChevrons />

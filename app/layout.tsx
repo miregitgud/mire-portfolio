@@ -30,7 +30,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${syne.variable} h-full antialiased`}
     >
-      <body className="min-h-full bg-ink text-paper">{children}</body>
+      <body className="min-h-full bg-ink text-paper page-enter">{children}</body>
     </html>
   );
 }
