@@ -562,7 +562,7 @@ export function Portfolio() {
           
           {/* Steam — mystery box easter egg */}
           <Reveal delay={0.22}>
-            <div className="mt-16 flex min-h-9 flex-wrap items-center gap-3 [&>a]:mt-0 [&>a]:cursor-help [&>a]:opacity-40 [&>a:hover]:opacity-100 [&>a:focus-visible]:opacity-100">
+            <div className="mt-16 flex min-h-9 flex-wrap items-center gap-3 [&>a]:mt-0 [&>a]:cursor-help [&>a]:opacity-40 [&>a:hover]:opacity-100 [&>a:focus-visible]:opacity-100 [&>a[data-open=true]]:opacity-100">
               <p className="font-mono text-[11px] tracking-[0.16em] text-muted uppercase">
                 © 2026 miregitgud · Made with love and a cup of coffee.
               </p>
