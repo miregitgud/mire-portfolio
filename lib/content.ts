@@ -35,7 +35,8 @@ export const contact = {
   linkedin: "https://linkedin.com/in/ayyashjibril",
   github: "https://github.com/miregitgud",
   location: "Depok, Jawa Barat, Indonesia",
-  cv: "/cv-ayyash-jibril.pdf", 
+  cv: "/cv-ayyash-jibril.pdf",
+  steam: "https://steamcommunity.com/id/mirethegame/",
 } as const;
 
 export const disciplines = [

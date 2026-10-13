@@ -19,9 +19,9 @@ const syne = Syne({
 });
 
 export const metadata: Metadata = {
-  title: "Ayyash — Developer & Motion",
+  title: `Ayyash "miregitgud" </> Android & Web Developer`,
   description:
-    "Portfolio of Ayyash: Android, backend, vector illustration, and motion graphics.",
+    "Portfolio of Ayyash Muhammad Jibril",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

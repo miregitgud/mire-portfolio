@@ -1,14 +1,18 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { certs, contact, disciplines, projects, skills } from "@/lib/content";
 import { Nav } from "@/components/nav";
 import { Scene } from "@/components/scene";
 import { Typewriter } from "@/components/typewriter";
 import { Reveal } from "@/components/reveal";
+import { SteamBox } from "@/components/steam-box";
+import { GlitchText } from "@/components/glitch-text";
 
 export function Portfolio() {
+  const [steamActive, setSteamActive] = useState(false);
+
   useEffect(() => {
     // Always return to top on load/refresh — disable browser scroll restoration
     if (typeof window !== "undefined") {
@@ -33,7 +37,7 @@ export function Portfolio() {
             Android & Web Developer
           </p>
           <div className="hero-mask">
-            <h1 className="hero-title font-display whitespace-nowrap text-[clamp(2.05rem,8.4vw,5.1rem)] leading-[0.92] font-bold tracking-[-0.045em]">
+            <h1 className="hero-title font-display md:whitespace-nowrap text-[clamp(2.05rem,8.4vw,5.1rem)] leading-[0.92] font-bold tracking-[-0.045em]">
               Hi, I&apos;m Ayyash
             </h1>
             <span className="hero-box" aria-hidden="true" />
@@ -464,18 +468,39 @@ export function Portfolio() {
                 05 — Contact
               </p>
               <h2 className="mt-4 font-display text-[clamp(2.4rem,7vw,6rem)] leading-[0.9] font-semibold tracking-[-0.05em]">
-                Open to Android &amp; fullstack roles. Let&apos;s talk.
+                <GlitchText
+                  text={
+                    steamActive
+                      ? "Open to Duelist & Controller roles, let's clear that site."
+                      : "Open to Android & fullstack roles. Let's discuss further."
+                  }
+                  reserve={[
+                    "Open to Android & fullstack roles. Let's talk.",
+                    "Open to Duelist & Controller roles, let's clear that site.",
+                  ]}
+                />
               </h2>
             </div>
           </Reveal>
           <Reveal delay={0.08}>
-            <p className="mt-4 flex items-center gap-2 font-mono text-[11px] tracking-[0.16em] text-muted uppercase">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-lime opacity-60" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-lime" />
-              </span>
-              Currently open to full-time WFO and part-time remote roles · Based in Depok, Indonesia
-            </p>
+          <p className="mt-4 flex items-center gap-2 font-mono text-[11px] tracking-[0.16em] text-muted uppercase">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-lime opacity-60" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-lime" />
+            </span>
+            <GlitchText
+              stagger={0.45}
+              text={
+                steamActive
+                  ? "Currently open to Valorant and Monster Hunter parties · Based in Depok, Indonesia"
+                  : "Currently open to full-time WFO and part-time remote roles · Based in Depok, Indonesia"
+              }
+              reserve={[
+                "Currently open to full-time WFO and part-time remote roles · Based in Depok, Indonesia",
+                "Currently open to Valorant and Monster Hunter parties · Based in Depok, Indonesia",
+              ]}
+            />
+          </p>
           </Reveal>
           <Reveal delay={0.12}>
             <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 text-base text-paper/75">
@@ -534,6 +559,11 @@ export function Portfolio() {
                 Download CV
               </a>
             </div>
+          </Reveal>
+          
+          {/* Steam — mystery box easter egg */}
+          <Reveal delay={0.3}>
+            <SteamBox onActiveChange={setSteamActive} />
           </Reveal>
           <Reveal delay={0.22}>
             <p className="mt-16 font-mono text-[11px] tracking-[0.16em] text-muted uppercase">

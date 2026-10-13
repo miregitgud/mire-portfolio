@@ -220,18 +220,12 @@ a:hover .cv-icon {
 }
 
 @keyframes page-enter {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 .page-enter {
-  animation: page-enter 3.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: page-enter 1.4s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 .reveal {
   opacity: 0;
