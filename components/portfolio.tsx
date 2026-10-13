@@ -473,10 +473,10 @@ export function Portfolio() {
                   text={
                     steamActive
                       ? "Open to Duelist & Controller roles. Run it down."
-                      : "Open to Android & Fullstack roles. Let's discuss further."
+                      : "Open to Android & Fullstack roles. Let's discuss."
                   }
                   reserve={[
-                    "Open to Android & Fullstack roles. Let's discuss further.",
+                    "Open to Android & Fullstack roles. Let's discuss.",
                     "Open to Duelist & Controller roles. Run it down.",
                   ]}
                 />
