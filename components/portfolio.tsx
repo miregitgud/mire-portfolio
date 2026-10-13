@@ -323,6 +323,12 @@ export function Portfolio() {
                     {project.kind}
                   </p>
                   <p className="text-sm leading-6 text-muted">{project.copy}</p>
+                  <span className="mt-3 md:mt-0 col-span-full md:col-auto flex items-center gap-1.5 font-mono text-[10px] tracking-[0.16em] uppercase opacity-0 group-hover:opacity-100 [@media(hover:none)]:opacity-40 transition-opacity duration-200" style={{ color: project.accent }}>
+                    See details
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true" className="transition-transform duration-200 group-hover:translate-x-0.5">
+                      <path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </span>
                 </ExternalLink>
               </li>
             ))}
@@ -379,6 +385,12 @@ export function Portfolio() {
                     <span className="font-mono text-[11px] text-muted">{cert.year}</span>
                     <span className="h-px flex-1 bg-paper/8" />
                     <span className="font-mono text-[10px] tracking-[0.1em] text-muted/60">{cert.location}</span>
+                    <span className="flex items-center gap-1 font-mono text-[10px] tracking-[0.16em] text-lime uppercase opacity-0 group-hover:opacity-100 [@media(hover:none)]:opacity-40 transition-opacity duration-200">
+                      See details
+                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true" className="transition-transform duration-200 group-hover:translate-x-0.5">
+                        <path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </span>
                   </div>
                 </ExternalLink>
               </li>
