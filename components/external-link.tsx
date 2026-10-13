@@ -16,8 +16,13 @@ export const ExternalLink = forwardRef<HTMLAnchorElement, ExternalLinkProps>(
       (e: React.MouseEvent<HTMLAnchorElement>) => {
         if (!href.startsWith("http://") && !href.startsWith("https://")) return;
 
-        e.preventDefault();
+        // Run the consumer's onClick first (e.g. SteamBox first-tap guard).
+        // If it called e.preventDefault(), they're handling navigation themselves
+        // — bail out and don't show the dialog.
         onClick?.(e);
+        if (e.defaultPrevented) return;
+
+        e.preventDefault();
         setPending(href);
         const el = dialogRef.current;
         if (!el) return;
