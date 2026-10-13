@@ -567,6 +567,28 @@ a:hover .cv-icon {
   border-color: var(--mint);
 }
 
+/* Steam pill — light mode overrides */
+:root:not([data-theme="dark"]) .steam-hint {
+  --steam-bg: #dce3eb;
+  --steam-border: rgba(76, 107, 138, 0.4);
+  --steam-text: #2a3f55;
+  --steam-icon: #2a3f55;
+}
+[data-theme="dark"] .steam-hint,
+.steam-hint {
+  --steam-bg: #1b2838;
+  --steam-border: rgba(76, 107, 138, 0.6);
+  --steam-text: rgba(199, 213, 224, 0.8);
+  --steam-icon: #c7d5e0;
+}
+
+:root:not([data-theme="dark"]) .steam-hint:hover,
+:root:not([data-theme="dark"]) .steam-hint:focus-visible,
+:root:not([data-theme="dark"]) .steam-hint[data-open="true"] {
+  background-color: var(--steam-bg) !important;
+  border-color: var(--steam-border) !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .exit-dialog,
   .exit-dialog.is-closing {
