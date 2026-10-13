@@ -72,6 +72,10 @@ export function GlitchText({
     const target = Array.from(text);
     const old = Array.from(from);
 
+    // disable snap scroll during animation to prevent mobile jumping
+    const html = document.documentElement;
+    html.style.scrollSnapType = "none";
+
     const len = Math.max(target.length, old.length);
     const plan = Array.from({ length: len }, (_, i) => {
       const start = Math.floor(i * stagger);
@@ -99,10 +103,17 @@ export function GlitchText({
 
       shownRef.current = next.map((c) => c.ch).join("");
       setCells(next);
-      if (done) window.clearInterval(id);
+      if (done) {
+        window.clearInterval(id);
+        // restore snap scroll
+        html.style.scrollSnapType = "";
+      }
     }, frameMs);
 
-    return () => window.clearInterval(id);
+    return () => {
+      window.clearInterval(id);
+      html.style.scrollSnapType = "";
+    };
   }, [text, fade, fadeMs, stagger, scrambleFrames, frameMs]);
 
   // group letters into words so line breaks only happen between words
