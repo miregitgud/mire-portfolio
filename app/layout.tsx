@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next"
 import { Geist, Geist_Mono, Syne } from "next/font/google";
 import "./globals.css";
 
@@ -30,7 +31,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${syne.variable} h-full antialiased`}
     >
-      <body className="min-h-full bg-ink text-paper page-enter">{children}</body>
+      <body className="min-h-full bg-ink text-paper page-enter">
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
