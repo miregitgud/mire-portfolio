@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 
 import { contact } from "@/lib/content";
+import { ExternalLink } from "@/components/external-link";
 
 type Props = {
   onActiveChange?: (active: boolean) => void;
@@ -28,39 +29,32 @@ export function SteamBox({ onActiveChange }: Props) {
   }, [armed, onActiveChange]);
 
   return (
-    <a
+    <ExternalLink
       ref={ref}
       href={contact.steam}
-      target="_blank"
-      rel="noreferrer"
       aria-label="Add me on Steam"
       data-open={armed}
       onPointerDown={(e) => {
-        pointerType.current = e.pointerType;
+        pointerType.current = (e as React.PointerEvent).pointerType;
       }}
-      // pointer events instead of mouse events: touch taps also fire emulated
-      // mouse events, which would open the pill before the click handler runs
       onPointerEnter={(e) => {
-        if (e.pointerType === "mouse") onActiveChange?.(true);
+        if ((e as React.PointerEvent).pointerType === "mouse") onActiveChange?.(true);
       }}
       onPointerLeave={(e) => {
-        if (e.pointerType === "mouse") onActiveChange?.(false);
+        if ((e as React.PointerEvent).pointerType === "mouse") onActiveChange?.(false);
       }}
       onKeyDown={() => {
-        // keyboard activation (Enter) should follow the link directly
         pointerType.current = "mouse";
       }}
       onClick={(e) => {
         const isTouch = pointerType.current !== "mouse";
         if (isTouch && !armed) {
-          // first tap: open the pill, don't navigate yet
           e.preventDefault();
           setArmed(true);
           onActiveChange?.(true);
           return;
         }
         if (armed) {
-          // second tap: let the link open, then reset the page state
           window.setTimeout(() => {
             setArmed(false);
             onActiveChange?.(false);
@@ -68,7 +62,6 @@ export function SteamBox({ onActiveChange }: Props) {
         }
       }}
       onFocus={(e) => {
-        // only keyboard focus, so a mouse click doesn't leave the text swapped
         if (e.currentTarget.matches(":focus-visible")) onActiveChange?.(true);
       }}
       onBlur={() => {
@@ -138,6 +131,6 @@ export function SteamBox({ onActiveChange }: Props) {
           <rect x="6" y="2" width="2" height="4"/>
         </svg>
       </span>
-    </a>
+    </ExternalLink>
   );
 }

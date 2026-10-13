@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# mire-portfolio
+
+Personal portfolio of **Ayyash "miregitgud" Muhammad Jibril** — Android & Web Developer.
+
+Built with Next.js (App Router), Tailwind CSS v4, and TypeScript. Scroll-snapped single-page layout with light/dark mode, motion animations, and a few Easter eggs.
+
+## Stack
+
+- **Framework** — Next.js (App Router)
+- **Styling** — Tailwind CSS v4 + custom CSS
+- **Fonts** — Syne (display), Geist Sans, Geist Mono
+- **Language** — TypeScript
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+app/
+  layout.tsx        # Root layout, fonts, metadata
+  page.tsx          # Entry point
+  globals.css       # Global styles, animations, CSS vars
+components/
+  portfolio.tsx     # Main page composition
+  scene.tsx         # Hero background (Android mascot + grid)
+  nav.tsx           # Fixed navigation bar
+  typewriter.tsx    # Animated role typewriter
+  glitch-text.tsx   # Glitch swap text (contact section)
+  steam-box.tsx     # Steam Easter egg pill
+  discord-tag.tsx   # Discord handle (swaps in on Steam hover)
+  contact-mascot.tsx# Bugdroid ⇄ pixel sword swap animation
+  external-link.tsx # Confirmation dialog wrapper for external links
+  reveal.tsx        # Scroll-triggered fade-in wrapper
+lib/
+  content.ts        # All copy, links, projects, certs, skills
+public/
+  cv-ayyash-jibril.pdf
+  icons/            # Project icons
+```
 
-## Learn More
+## Features
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Scroll-snap sections with entrance animations
+- Light / dark mode toggle (persisted via `data-theme` on `<html>`)
+- External link confirmation dialog on every outbound link
+- Steam Easter egg — hover the mystery pill in the footer to swap the contact section into gaming mode

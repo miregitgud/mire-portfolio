@@ -44,7 +44,7 @@ export const disciplines = [
   {
     tag: "01",
     title: "Android",
-    copy: "Kotlin-first, Compose-native. Built and shipped apps for real users — from a field ops platform for tower technicians to a university community app for my thesis. Clean architecture, Coroutines, Flow.",
+    copy: "Kotlin powered, jumped by Compose. Built and shipped apps for real users. from a field ops platform for tower technicians to a university community app for my thesis. Clean architecture, Coroutines, Flow.",
     icons: [
       { type: "inline" as const, label: "Android" },
       { type: "si" as const, slug: "kotlin",         label: "Kotlin",          color: "#7F52FF" },
@@ -54,7 +54,7 @@ export const disciplines = [
   {
     tag: "02",
     title: "Websites",
-    copy: "Laravel for backend-heavy builds, Next.js and React for modern frontends. Comfortable moving from database schema to UI without losing the thread.",
+    copy: "Laravel for backend-heavy builds, Next.js and React for modern frontends. Comfortable moving from database schema to UI accordingly.",
     icons: [
       { type: "si" as const, slug: "laravel",  label: "Laravel",  color: "#FF2D20" },
       { type: "si" as const, slug: "nextdotjs", label: "Next.js", color: "#000000", opacity: 0.15 },
@@ -91,7 +91,7 @@ export const disciplines = [
 export const projects = [
   {
     year: "2026",
-    title: "FOP — Field Operation App",
+    title: "FOP (Field Operation App)",
     kind: "Android · Compose · Firebase · OneSignal · Python · PHP",
     copy: "A ground-up rebuilt ticketing system for Balitower technicians from Kotlin XML to a modern Jetpack Compose stack, preserving full business logic.",
     href: "https://play.google.com/store/apps/details?id=id.jds.mobilefop&pcampaignid=web_share",

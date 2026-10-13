@@ -11,6 +11,7 @@ import { SteamBox } from "@/components/steam-box";
 import { GlitchText } from "@/components/glitch-text";
 import { DiscordTag } from "@/components/discord-tag";
 import { ContactMascot } from "@/components/contact-mascot";
+import { ExternalLink } from "@/components/external-link";
 
 export function Portfolio() {
   const [steamActive, setSteamActive] = useState(false);
@@ -277,7 +278,7 @@ export function Portfolio() {
             <ul className="mt-14 divide-y divide-paper/10 border-y border-paper/10">
             {projects.map((project) => (
               <li key={project.title}>
-                <a
+                <ExternalLink
                   href={project.href}
                   className="group relative grid gap-2 py-6 md:grid-cols-[5.5rem_1.2fr_0.9fr_1.4fr] md:items-baseline overflow-hidden"
                   style={{ "--project-accent": project.accent } as React.CSSProperties}
@@ -322,7 +323,7 @@ export function Portfolio() {
                     {project.kind}
                   </p>
                   <p className="text-sm leading-6 text-muted">{project.copy}</p>
-                </a>
+                </ExternalLink>
               </li>
             ))}
             </ul>
@@ -361,7 +362,7 @@ export function Portfolio() {
             <ul className="mt-10 grid gap-px bg-paper/10 sm:grid-cols-2">
             {certs.map((cert) => (
               <li key={cert.title} className="bg-snow">
-                <a
+                <ExternalLink
                   href={cert.href}
                   className="group relative block overflow-hidden border-b border-paper/8 p-7 transition-all hover:bg-ink/[0.03]"
                 >
@@ -379,7 +380,7 @@ export function Portfolio() {
                     <span className="h-px flex-1 bg-paper/8" />
                     <span className="font-mono text-[10px] tracking-[0.1em] text-muted/60">{cert.location}</span>
                   </div>
-                </a>
+                </ExternalLink>
               </li>
             ))}
             </ul>
@@ -389,7 +390,7 @@ export function Portfolio() {
 
       <footer
         id="contact"
-        className="snap-section relative flex items-end border-t border-paper/8 bg-ink px-6 pb-10 md:px-12"
+        className="snap-section relative flex items-end border-t border-paper/8 px-6 pb-10 md:px-12"
         style={{ contain: "layout paint", willChange: "transform" }}
       >
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -471,12 +472,12 @@ export function Portfolio() {
                   fade={!steamActive}
                   text={
                     steamActive
-                      ? "Open to Duelist & Controller roles, let's clear that site."
-                      : "Open to Android & fullstack roles. Let's discuss further."
+                      ? "Open to Duelist & Controller roles. Run it down."
+                      : "Open to Android & Fullstack roles. Let's discuss further."
                   }
                   reserve={[
-                    "Open to Android & fullstack roles. Let's discuss further.",
-                    "Open to Duelist & Controller roles, let's clear that site.",
+                    "Open to Android & Fullstack roles. Let's discuss further.",
+                    "Open to Duelist & Controller roles. Run it down.",
                   ]}
                 />
               </h2>
@@ -493,12 +494,12 @@ export function Portfolio() {
               stagger={0.45}
               text={
                 steamActive
-                  ? "Currently open to Valorant and Monster Hunter parties · Based in Depok, Indonesia"
-                  : "Currently open to full-time WFO and part-time remote roles · Based in Depok, Indonesia"
+                  ? "Currently open (but not limited) to Valorant and Monster Hunter parties · Based in Depok, Indonesia"
+                  : "Currently open to part-time remote roles and mobile app commissions · Based in Depok, Indonesia"
               }
               reserve={[
-                "Currently open to full-time WFO and part-time remote roles · Based in Depok, Indonesia",
-                "Currently open to Valorant and Monster Hunter parties · Based in Depok, Indonesia",
+                "Currently open to part-time remote roles and mobile app commissions · Based in Depok, Indonesia",
+                "Currently open to (but not limited) Valorant and Monster Hunter parties · Based in Depok, Indonesia",
               ]}
             />
           </p>
@@ -517,41 +518,35 @@ export function Portfolio() {
                   {contact.email}
                 </a>
                 <span className="text-paper/20">|</span>
-                <a
+                <ExternalLink
                   className="text-paper/75 hover:text-lime transition-colors"
                   href={contact.whatsapp}
-                  target="_blank"
-                  rel="noreferrer"
                   aria-label="WhatsApp"
                 >
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                     <path d="M12.001 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.978-1.424A9.955 9.955 0 0 0 12.001 22C17.524 22 22 17.523 22 12S17.524 2 12.001 2Zm0 1.8a8.2 8.2 0 1 1 0 16.4 8.2 8.2 0 0 1 0-16.4Zm-3.39 3.707c-.207 0-.43.003-.62.012-.198.01-.476.074-.727.35-.252.277-.962.94-.962 2.29 0 1.35.984 2.655 1.122 2.84.137.183 1.907 3.037 4.69 4.136.655.25 1.167.4 1.566.51.658.185 1.258.16 1.732.097.528-.07 1.627-.664 1.857-1.306.23-.64.23-1.19.16-1.305-.068-.114-.252-.183-.528-.32-.277-.137-1.637-.808-1.89-.9-.252-.092-.435-.137-.617.137-.183.275-.71.9-.87 1.085-.16.183-.32.206-.596.069-.275-.138-1.162-.428-2.213-1.365-.818-.73-1.37-1.63-1.531-1.905-.16-.275-.017-.424.12-.56.123-.123.275-.32.413-.48.138-.16.183-.274.275-.457.09-.183.045-.343-.023-.48-.069-.137-.617-1.49-.847-2.04-.22-.534-.448-.462-.617-.47l-.525-.008Z"/>
                   </svg>
-                </a>
+                </ExternalLink>
                 <span className="text-paper/20">|</span>
-                <a
+                <ExternalLink
                   className="text-paper/75 hover:text-lime transition-colors"
                   href={contact.linkedin}
-                  target="_blank"
-                  rel="noreferrer"
                   aria-label="LinkedIn"
                 >
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                     <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14Zm-1.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79ZM6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68Zm1.39 9.94V9.13H5.5v9.37h2.77Z"/>
                   </svg>
-                </a>
+                </ExternalLink>
                 <span className="text-paper/20">|</span>
-                <a
+                <ExternalLink
                   className="text-paper/75 hover:text-lime transition-colors"
                   href={contact.github}
-                  target="_blank"
-                  rel="noreferrer"
                   aria-label="GitHub"
                 >
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                     <path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10Z"/>
                   </svg>
-                </a>
+                </ExternalLink>
                 <a
                   className="inline-flex items-center gap-2 border border-paper/20 px-4 py-2 font-mono text-[11px] tracking-[0.18em] uppercase transition-colors hover:border-lime hover:text-lime"
                   href={contact.cv}

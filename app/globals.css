@@ -77,6 +77,19 @@ body {
   background: linear-gradient(180deg, #d7e7f7 0%, #e7f1fb 48%, #ffffff 100%);
 }
 
+#contact {
+  background: linear-gradient(180deg, #ffffff 0%, #e7f1fb 48%, #d7e7f7 100%);
+}
+
+/* Light mode: decoration SVGs are near-invisible at their dark-mode opacities — compensate */
+:root:not([data-theme="dark"]) #contact .pointer-events-none {
+  filter: saturate(2) brightness(0.72);
+}
+
+[data-theme="dark"] #contact {
+  background: linear-gradient(180deg, #12161f 0%, #1a1f2e 48%, #0d1117 100%);
+}
+
 .type-cursor {
   display: inline-block;
   width: 0.08em;
@@ -426,5 +439,137 @@ a:hover .cv-icon {
     animation: none;
     opacity: 1;
     transform: none;
+  }
+}
+
+/* ── Exit confirmation dialog ─────────────────────────────────────────────── */
+@keyframes dialog-in {
+  from { opacity: 0; transform: scale(0.94) translateY(8px); }
+  to   { opacity: 1; transform: scale(1)    translateY(0); }
+}
+@keyframes dialog-out {
+  from { opacity: 1; transform: scale(1)    translateY(0); }
+  to   { opacity: 0; transform: scale(0.94) translateY(8px); }
+}
+@keyframes backdrop-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes backdrop-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+.exit-dialog {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  border: none;
+  border-radius: 12px;
+  padding: 0;
+  background: transparent;
+  width: min(360px, calc(100vw - 2rem));
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.18), 0 2px 8px rgba(0, 0, 0, 0.08);
+  animation: dialog-in 0.22s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.exit-dialog.is-closing {
+  animation: dialog-out 0.18s cubic-bezier(0.55, 0, 1, 0.45) both;
+}
+
+.exit-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(4px);
+  animation: backdrop-in 0.22s ease both;
+}
+
+.exit-dialog.is-closing::backdrop {
+  animation: backdrop-out 0.18s ease both;
+}
+
+.exit-dialog__inner {
+  background: var(--ink);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 1.75rem 1.75rem 1.5rem;
+}
+
+[data-theme="dark"] .exit-dialog__inner {
+  background: #1a1f2e;
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+.exit-dialog__label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.35rem;
+}
+
+.exit-dialog__host {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: var(--paper);
+  word-break: break-all;
+}
+
+.exit-dialog__sub {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 0.4rem;
+}
+
+.exit-dialog__actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.exit-dialog__cancel,
+.exit-dialog__confirm {
+  flex: 1;
+  padding: 0.6rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.exit-dialog__cancel {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.12);
+  color: var(--muted);
+}
+
+.exit-dialog__cancel:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--paper);
+}
+
+.exit-dialog__confirm {
+  background: var(--lime);
+  border-color: var(--lime);
+  color: #0d1117;
+  font-weight: 600;
+}
+
+.exit-dialog__confirm:hover {
+  background: var(--mint);
+  border-color: var(--mint);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .exit-dialog,
+  .exit-dialog.is-closing {
+    animation: none;
   }
 }
