@@ -404,3 +404,25 @@ a:hover .cv-icon {
     animation: none !important;
   }
 }
+
+/* hero entrance: content rises in after the title sweep */
+@keyframes hero-in {
+  from { opacity: 0; transform: translateY(18px); filter: blur(4px); }
+  to   { opacity: 1; transform: none;             filter: blur(0); }
+}
+
+/* only animate once JS has hydrated — prevents SSR animation-already-done bug */
+.hero-in {
+  opacity: 0;
+}
+.hero-ready .hero-in {
+  animation: hero-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0s) backwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-in,
+  .hero-ready .hero-in {
+    animation: none;
+    opacity: 1;
+  }
+}

@@ -21,87 +21,96 @@ export function Portfolio() {
       history.scrollRestoration = "manual";
       window.scrollTo({ top: 0, behavior: "instant" });
     }
+    // Enable hero entrance animations after hydration
+    document.documentElement.classList.add("hero-ready");
   }, []);
 
   return (
     <div className="relative">
       <Nav />
-      <div className="page-enter">
+      <div>
 
-      <section
-        id="home"
-        className="snap-section relative flex items-center px-6 md:px-12"
-      >
-        <Scene />
-        <div className="relative mx-auto w-full max-w-6xl pt-16">
-          <div className="w-full md:max-w-[52%]">
-          <p className="mb-6 font-mono text-[11px] tracking-[0.28em] text-mint uppercase">
-            Android & Web Developer
-          </p>
-          <div className="hero-mask">
-            <h1 className="hero-title font-display md:whitespace-nowrap text-[clamp(2.05rem,8.4vw,5.1rem)] leading-[0.92] font-bold tracking-[-0.045em]">
-              Hi, I&apos;m Ayyash
-            </h1>
-            <span className="hero-box" aria-hidden="true" />
-          </div>
-          <Typewriter />
-          <div className="mt-8 flex flex-wrap gap-2">
-            {skills.map((skill) => (
-              <span
-                key={skill.name}
-                className="group/pill rounded-full border border-paper/20 bg-paper/8 px-3 py-1 font-mono text-[11px] tracking-[0.12em] text-paper/85 transition-all duration-200 cursor-default"
-                style={
-                  {
-                    "--pill-color": skill.color,
-                    "--pill-color-bg": skill.color + "1a",
-                    "--pill-color-border": skill.color + "80",
-                  } as React.CSSProperties
-                }
-                onMouseEnter={(e) => {
-                  const el = e.currentTarget;
-                  el.style.color = skill.color;
-                  el.style.borderColor = skill.color + "80";
-                  el.style.backgroundColor = skill.color + "1a";
-                }}
-                onMouseLeave={(e) => {
-                  const el = e.currentTarget;
-                  el.style.color = "";
-                  el.style.borderColor = "";
-                  el.style.backgroundColor = "";
-                }}
-              >
-                {skill.name}
-              </span>
-            ))}
-          </div>
-          <p className="mt-6 flex items-center gap-2 font-mono text-[11px] tracking-[0.16em] text-muted uppercase">
-          </p>
-          <a
-            href="#about"
-            className="mt-14 inline-flex items-center gap-3 text-[11px] tracking-[0.22em] text-muted uppercase"
-          >
-            <span className="h-px w-10 bg-lime" />
-            Scroll
-            <svg
-              className="scroll-chevron"
-              width="12"
-              height="8"
-              viewBox="0 0 12 8"
-              fill="none"
-              aria-hidden="true"
-            >
-              <polyline
-                points="1,1 6,7 11,1"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </a>
-          </div>
+    <section
+      id="home"
+      className="snap-section relative flex items-center px-6 md:px-12"
+    >
+      <Scene />
+      <div className="relative mx-auto w-full max-w-6xl pt-16">
+        <div className="w-full md:max-w-[52%]">
+        <p
+          className="hero-in mb-6 font-mono text-[11px] tracking-[0.28em] text-mint uppercase"
+          style={{ "--d": "0.1s" } as React.CSSProperties}
+        >
+          Android & Web Developer
+        </p>
+        <div className="hero-mask">
+          <h1 className="hero-title font-display md:whitespace-nowrap text-[clamp(2.05rem,8.4vw,5.1rem)] leading-[0.92] font-bold tracking-[-0.045em]">
+            Hi, I&apos;m Ayyash
+          </h1>
+          <span className="hero-box" aria-hidden="true" />
         </div>
-      </section>
+        <div className="hero-in" style={{ "--d": "0.75s" } as React.CSSProperties}>
+          <Typewriter />
+        </div>
+        <div className="mt-8 flex flex-wrap gap-2">
+          {skills.map((skill, i) => (
+            <span
+              key={skill.name}
+              className="hero-in group/pill rounded-full border border-paper/20 bg-paper/8 px-3 py-1 font-mono text-[11px] tracking-[0.12em] text-paper/85 transition-all duration-200 cursor-default"
+              style={
+                {
+                  "--d": `${(0.95 + i * 0.05).toFixed(2)}s`,
+                  "--pill-color": skill.color,
+                  "--pill-color-bg": skill.color + "1a",
+                  "--pill-color-border": skill.color + "80",
+                } as React.CSSProperties
+              }
+              onMouseEnter={(e) => {
+                const el = e.currentTarget;
+                el.style.color = skill.color;
+                el.style.borderColor = skill.color + "80";
+                el.style.backgroundColor = skill.color + "1a";
+              }}
+              onMouseLeave={(e) => {
+                const el = e.currentTarget;
+                el.style.color = "";
+                el.style.borderColor = "";
+                el.style.backgroundColor = "";
+              }}
+            >
+              {skill.name}
+            </span>
+          ))}
+        </div>
+        <p className="mt-6 flex items-center gap-2 font-mono text-[11px] tracking-[0.16em] text-muted uppercase">
+        </p>
+        <a
+          href="#about"
+          className="hero-in mt-14 inline-flex items-center gap-3 text-[11px] tracking-[0.22em] text-muted uppercase"
+          style={{ "--d": `${(0.95 + skills.length * 0.05 + 0.1).toFixed(2)}s` } as React.CSSProperties}
+        >
+          <span className="h-px w-10 bg-lime" />
+          Scroll
+          <svg
+            className="scroll-chevron"
+            width="12"
+            height="8"
+            viewBox="0 0 12 8"
+            fill="none"
+            aria-hidden="true"
+          >
+            <polyline
+              points="1,1 6,7 11,1"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </a>
+        </div>
+      </div>
+    </section>
 
       <section
         id="about"
