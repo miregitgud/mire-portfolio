@@ -390,6 +390,7 @@ export function Portfolio() {
       <footer
         id="contact"
         className="snap-section relative flex items-end border-t border-paper/8 bg-ink px-6 pb-10 md:px-12"
+        style={{ contain: "layout paint", willChange: "transform" }}
       >
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
 
@@ -465,7 +466,7 @@ export function Portfolio() {
               <p className="font-mono text-[11px] tracking-[0.28em] text-mint uppercase">
                 05 — Contact
               </p>
-              <h2 className="mt-4 font-display text-[clamp(2.4rem,7vw,6rem)] leading-[0.9] font-semibold tracking-[-0.05em]">
+              <h2 className="mt-4 font-display text-[clamp(2.4rem,7vw,6rem)] leading-[0.9] font-semibold tracking-[-0.05em] overflow-hidden" style={{ contain: "layout" }}>
                 <GlitchText
                   fade={!steamActive}
                   text={
