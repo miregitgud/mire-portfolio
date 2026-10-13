@@ -23,6 +23,10 @@ type Props = {
   /** how many frames each letter scrambles before settling */
   scrambleFrames?: number;
   frameMs?: number;
+  /** when true, text changes crossfade instead of glitching */
+  fade?: boolean;
+  /** duration of each half of the crossfade (out, then in) */
+  fadeMs?: number;
   /** every string this text can become, used to lock the block's height */
   reserve?: string[];
 };
@@ -33,23 +37,40 @@ export function GlitchText({
   stagger = 0.6,
   scrambleFrames = 7,
   frameMs = 35,
+  fade = false,
+  fadeMs = 180,
   reserve = [],
 }: Props) {
   const [cells, setCells] = useState<Cell[]>(() => toCells(text));
+  const [faded, setFaded] = useState(false);
   const shownRef = useRef(text);
 
   useEffect(() => {
     const from = shownRef.current;
     if (from === text) return;
 
-    const target = Array.from(text);
-    const old = Array.from(from);
-
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       shownRef.current = text;
       setCells(toCells(text));
+      setFaded(false);
       return;
     }
+
+    // simple crossfade: fade out → swap text → fade in
+    if (fade) {
+      setFaded(true);
+      const t = window.setTimeout(() => {
+        shownRef.current = text;
+        setCells(toCells(text));
+        setFaded(false);
+      }, fadeMs);
+      return () => window.clearTimeout(t);
+    }
+
+    // glitch: scramble letter by letter
+    setFaded(false);
+    const target = Array.from(text);
+    const old = Array.from(from);
 
     const len = Math.max(target.length, old.length);
     const plan = Array.from({ length: len }, (_, i) => {
@@ -82,7 +103,7 @@ export function GlitchText({
     }, frameMs);
 
     return () => window.clearInterval(id);
-  }, [text, stagger, scrambleFrames, frameMs]);
+  }, [text, fade, fadeMs, stagger, scrambleFrames, frameMs]);
 
   // group letters into words so line breaks only happen between words
   const words: { ch: string; glitch: boolean; i: number }[][] = [];
@@ -110,7 +131,14 @@ export function GlitchText({
         </span>
       ))}
 
-      <span aria-hidden="true" className="col-start-1 row-start-1">
+      <span
+        aria-hidden="true"
+        className="col-start-1 row-start-1"
+        style={{
+          opacity: faded ? 0 : 1,
+          transition: `opacity ${fadeMs}ms ease`,
+        }}
+      >
         {words.map((word, wi) => (
           <span key={wi}>
             {wi > 0 && " "}

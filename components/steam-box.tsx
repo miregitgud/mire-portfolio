@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import { contact } from "@/lib/content";
 
 type Props = {
@@ -8,71 +7,38 @@ type Props = {
 };
 
 export function SteamBox({ onActiveChange }: Props) {
-  const [open, setOpen] = useState(false);
-  const ref = useRef<HTMLAnchorElement>(null);
-  const pointerType = useRef<string>("mouse");
-
-  // report state to the parent (drives the footer text swap)
-  useEffect(() => {
-    onActiveChange?.(open);
-  }, [open, onActiveChange]);
-
-  // tapping anywhere outside collapses it (touch)
-  useEffect(() => {
-    if (!open) return;
-    const close = (e: PointerEvent) => {
-      if (e.pointerType === "mouse") return;
-      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
-    };
-    document.addEventListener("pointerdown", close);
-    return () => document.removeEventListener("pointerdown", close);
-  }, [open]);
-
   return (
     <a
-      ref={ref}
       href={contact.steam}
       target="_blank"
       rel="noreferrer"
       aria-label="Add me on Steam"
-      data-open={open}
-      onPointerDown={(e) => {
-        pointerType.current = e.pointerType;
-      }}
-      onPointerEnter={(e) => {
-        if (e.pointerType === "mouse") setOpen(true);
-      }}
-      onPointerLeave={(e) => {
-        if (e.pointerType === "mouse") setOpen(false);
-      }}
+      onMouseEnter={() => onActiveChange?.(true)}
+      onMouseLeave={() => onActiveChange?.(false)}
       onFocus={(e) => {
-        if (e.currentTarget.matches(":focus-visible")) setOpen(true);
+        // only keyboard focus, so a mouse click doesn't leave the text swapped
+        if (e.currentTarget.matches(":focus-visible")) onActiveChange?.(true);
       }}
-      onBlur={() => setOpen(false)}
-      onClick={(e) => {
-        // first touch tap only expands; second tap follows the link
-        if (pointerType.current !== "mouse" && e.detail !== 0 && !open) {
-          e.preventDefault();
-          setOpen(true);
-        }
-      }}
+      onBlur={() => onActiveChange?.(false)}
       className="
-        group relative mt-6 inline-flex items-center overflow-hidden
+        steam-hint group relative mt-6 inline-flex items-center overflow-hidden
         rounded-sm border border-paper/20 bg-paper/5
         transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]
         w-8 h-8
-        data-[open=true]:w-[28rem] data-[open=true]:max-w-[calc(100vw-3rem)]
-        data-[open=true]:h-9 data-[open=true]:px-3
-        data-[open=true]:rounded-full
-        data-[open=true]:border-[#4c6b8a]/60 data-[open=true]:bg-[#1b2838]
+        hover:w-[28rem] hover:max-w-[calc(100vw-3rem)] hover:h-9
+        hover:border-[#4c6b8a]/60 hover:bg-[#1b2838]
+        hover:rounded-full hover:px-3
+        focus-visible:w-[28rem] focus-visible:max-w-[calc(100vw-3rem)] focus-visible:h-9
+        focus-visible:border-[#4c6b8a]/60 focus-visible:bg-[#1b2838]
+        focus-visible:rounded-full focus-visible:px-3
       "
     >
-      {/* 8-bit ? — visible by default, fades out when open */}
+      {/* 8-bit ? — visible by default, fades out on hover */}
       <span
         className="
           absolute inset-0 flex items-center justify-center
           transition-opacity duration-200
-          opacity-100 group-data-[open=true]:opacity-0
+          opacity-100 group-hover:opacity-0 group-focus-visible:opacity-0
         "
         aria-hidden="true"
       >
@@ -88,11 +54,11 @@ export function SteamBox({ onActiveChange }: Props) {
         </svg>
       </span>
 
-      {/* expanded content — hidden by default, fades in when open */}
+      {/* expanded content — hidden by default, fades in on hover */}
       <span
         className="
           flex min-w-max items-center gap-2.5
-          opacity-0 group-data-[open=true]:opacity-100
+          opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100
           transition-opacity duration-300 delay-150
         "
       >

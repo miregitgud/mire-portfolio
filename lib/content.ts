@@ -34,6 +34,7 @@ export const contact = {
   whatsapp: "https://wa.me/6285157800626",
   linkedin: "https://linkedin.com/in/ayyashjibril",
   github: "https://github.com/miregitgud",
+  discord: "mirezka",
   location: "Depok, Jawa Barat, Indonesia",
   cv: "/cv-ayyash-jibril.pdf",
   steam: "https://steamcommunity.com/id/mirethegame/",
