@@ -128,7 +128,7 @@ export function SteamBox({ onActiveChange }: Props) {
         </svg>
         <span className="font-mono text-[10px] tracking-[0.08em] text-[#c7d5e0]/80 whitespace-nowrap">
           <span className="hidden sm:inline">our taste in games might align — add me on Steam!</span>
-          <span className="sm:hidden">our taste in games might align — add me on Steam!</span>
+          <span className="sm:hidden">our taste in games might align — add me!</span>
         </span>
         {/* pixel arrow */}
         <svg viewBox="0 0 8 8" width="8" height="8" fill="#c7d5e0" style={{ imageRendering: "pixelated" }} className="flex-shrink-0 opacity-50" aria-hidden="true">
