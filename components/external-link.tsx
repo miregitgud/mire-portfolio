@@ -71,8 +71,8 @@ export const ExternalLink = forwardRef<HTMLAnchorElement, ExternalLinkProps>(
         <a ref={forwardedRef} href={href} onClick={handleClick} {...props}>
           {children}
           {isPlaceholder && (
-            <span className="wip-badge" aria-label="Work in progress">
-              WIP
+            <span className="wip-badge" aria-label="Work in progress" aria-hidden="true">
+              [ soon ]
             </span>
           )}
         </a>

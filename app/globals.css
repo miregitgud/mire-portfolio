@@ -600,26 +600,14 @@ a:hover .cv-icon {
 
 /* ── WIP badge — shown on links with href="#" ─────────────────────────────── */
 .wip-badge {
-  display: inline-block;
-  margin-left: 0.45em;
-  padding: 0.1em 0.45em;
+  display: inline;
+  margin-left: 0.5em;
   font-family: var(--font-mono);
-  font-size: 0.6em;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  line-height: 1.6;
+  font-size: 0.62em;
+  letter-spacing: 0.18em;
+  text-transform: lowercase;
   vertical-align: middle;
-  color: var(--paper);
-  background: transparent;
-  border: 1px solid var(--muted);
-  border-radius: 4px;
-  opacity: 0.55;
+  color: var(--muted);
+  opacity: 0.6;
   pointer-events: none;
-  transition: opacity 0.2s ease;
-}
-
-a:hover .wip-badge,
-a:focus-visible .wip-badge {
-  opacity: 0.85;
 }
