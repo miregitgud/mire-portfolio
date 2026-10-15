@@ -64,10 +64,17 @@ export const ExternalLink = forwardRef<HTMLAnchorElement, ExternalLinkProps>(
       displayHost = href;
     }
 
+    const isPlaceholder = href === "#" || href.startsWith("#");
+
     return (
       <>
         <a ref={forwardedRef} href={href} onClick={handleClick} {...props}>
           {children}
+          {isPlaceholder && (
+            <span className="wip-badge" aria-label="Work in progress">
+              WIP
+            </span>
+          )}
         </a>
 
         <dialog ref={dialogRef} className="exit-dialog" onClick={(e) => e.target === dialogRef.current && cancel()}>
